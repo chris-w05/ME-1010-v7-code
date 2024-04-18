@@ -22,8 +22,7 @@ void GetDataFromMATLAB(){
 
   //Hardcoded offsets for targets 0 and 5 to shoot while moving
   //taken with an average time to target of 0.6s, multiplied by a 0.04m/s velocity 
-  driveTo[0] = driveTo[0];// - 1;
-  driveTo[5] = driveTo[5];// + 1;
+  driveTo[1] = 40;
 
   target = 0;
   

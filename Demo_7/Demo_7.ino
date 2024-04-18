@@ -139,6 +139,8 @@ float kappa = 3.0445; // previously 2.9945
 float lambda = -0.00135; //previously -0.0013
 
 //unsigned long reloadTime = 0;
+bool targetBeyondReloader = false;
+bool reloadComplete = false;
 int reloadStripe = 36;
 bool stuffComputed = false;
 bool firstHome = false;

@@ -1,6 +1,13 @@
 void MoveLauncher(){
   //DebugPrint("Calling MoveLauncher function; startMotion = ", startMotion);
   //Serial.print("Calling MoveLauncher function; startMotion = ");
+  if(driveTo[target] > reloadStripe)){
+    targetBeyondReloader = true;
+  }
+  else{
+    targetBeyondReloader = false;
+  }
+
   if(motorOn){
     Moving();
 
@@ -19,7 +26,7 @@ void MoveLauncher(){
   }
 
   //dispensing while moving  
-  if( (counts > reloadStripe  && motorRight) || rightSwitchState ){
+  if( ((counts > reloadStripe  && motorRight) || rightSwitchState) && !reloadComplete ){
     //reloadServo.write(dispenseAngle);
     AtReloader();
   }
@@ -127,7 +134,7 @@ void Moving(){
     Serial.println("Launcher at home, counts set to 5");
   }
   // stop at reloader (moving right, right switch tripped)
-  if( motorRight && (rightSwitchState == 1 || counts > reloadStripe)){
+  if( !reloadComplete && motorRight && (rightSwitchState == 1 || counts > reloadStripe)){
     TurnMotorOff(10);
     CountStripes();
     //counts = 43;

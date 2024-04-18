@@ -26,6 +26,7 @@ void AtReloader(){
       reloadServo.write(dispenseAngle);
       //Serial.println(F("dispensing"));
       //change state, update time
+      reloadComplete = false;
       state = 2;
       stateChangeTime = millis();
       //reloadTime = stateChangeTime;
@@ -35,6 +36,7 @@ void AtReloader(){
        tslStateChange = millis() - stateChangeTime;
       if( tslStateChange > dispenseDuration){
         //command servo
+        reloadComplete = true;
         reloadServo.write(holdAngle);
         //Serial.println("Holding");
         //change state, update time
@@ -146,6 +148,8 @@ void AtTarget(){
         //change state, update time
         state = 4;
         stateChangeTime = millis();
+        reloadComplete = false;
+        Serial.println("Current target is:" + String(target));
       }
     break;
 
