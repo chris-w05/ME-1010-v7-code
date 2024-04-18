@@ -9,7 +9,7 @@ void NotMoving(){
     AtHome();
   }
   //at reloader
-   else if(rightSwitchState || counts > reloadStripe){
+   else if(rightSwitchState || (counts > reloadStripe && !targetBeyondReloader)){
      AtReloader();
    }
   //at target

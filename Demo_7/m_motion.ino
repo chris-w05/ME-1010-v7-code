@@ -1,7 +1,7 @@
 void MoveLauncher(){
   //DebugPrint("Calling MoveLauncher function; startMotion = ", startMotion);
   //Serial.print("Calling MoveLauncher function; startMotion = ");
-  if(driveTo[target] > reloadStripe)){
+  if(driveTo[target] > reloadStripe){
     targetBeyondReloader = true;
   }
   else{
@@ -23,6 +23,10 @@ void MoveLauncher(){
     else{
       NotMoving();
     }
+  }
+
+  if(targetBeyondReloader && !motorRight && !reloadComplete){
+    AtReloader();
   }
 
   //dispensing while moving  
